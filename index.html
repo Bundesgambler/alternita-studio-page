@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alternita Studio — Politische Kommunikation. Sofort einsatzbereit.</title>
+<meta name="description" content="Von der Nachricht zum fertigen Social-Media-Post in fünf Minuten. Mit Ihren Positionen. In Ihrem Stil. In Ihrem Branding.">
+<link rel="icon" href="/logo.png" type="image/png">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#E2001A;
+  --red-hover:#ff1a33;
+  --bg:#ffffff;
+  --bg-card:#f8f8f8;
+  --bg-card-alt:#f2f2f2;
+  --bg-highlight:#e8e8e8;
+  --text:#333;
+  --text-muted:#666;
+  --text-dim:#999;
+  --heading:#111;
+  --border:#ddd;
+  --nav-bg:rgba(255,255,255,.92);
+  --nav-hover:#111;
+  --input-bg:#fff;
+  --shadow-card:0 1px 4px rgba(0,0,0,.06);
+  --font-head:'Barlow Condensed',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+  --max-w:1200px;
+  --section-pad:100px 0;
+}
+[data-theme="dark"]{
+  --bg:#0f0f0f;
+  --bg-card:#1a1a1a;
+  --bg-card-alt:#141414;
+  --bg-highlight:#222;
+  --text:#e8e8e8;
+  --text-muted:#999;
+  --text-dim:#666;
+  --heading:#fff;
+  --border:#2a2a2a;
+  --nav-bg:rgba(15,15,15,.92);
+  --nav-hover:#fff;
+  --input-bg:var(--bg-card-alt);
+  --shadow-card:none;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+img{max-width:100%;display:block}
+a{color:var(--red);text-decoration:none;transition:color .2s}
+a:hover{color:var(--red-hover)}
+
+.wrap{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+.section{padding:var(--section-pad)}
+.section-border{border-top:1px solid var(--border)}
+
+h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.1;letter-spacing:-0.02em}
+h2.section-title{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:20px;color:var(--heading)}
+.section-sub{font-size:1.1rem;color:var(--text-muted);max-width:700px;margin-bottom:48px}
+
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 0}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{height:36px}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:var(--text-muted);font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--nav-hover)}
+.nav-cta{background:var(--red);color:#fff !important;padding:8px 20px;border-radius:6px;font-weight:600;font-size:.85rem;transition:background .2s}
+.nav-cta:hover{background:var(--red-hover)}
+
+/* ===== HERO ===== */
+.hero{padding:160px 0 100px;text-align:center;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:120px;height:1px;background:var(--border)}
+.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);color:var(--heading);margin-bottom:24px;max-width:900px;margin-left:auto;margin-right:auto}
+.hero-sub{font-size:clamp(1rem,2vw,1.25rem);color:var(--text-muted);max-width:680px;margin:0 auto 44px;line-height:1.7}
+.hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 32px;border-radius:8px;font-weight:600;font-size:1rem;transition:all .2s;cursor:pointer;border:none;font-family:var(--font-body)}
+.btn-primary{background:var(--red);color:#fff}
+.btn-primary:hover{background:var(--red-hover);color:#fff;transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-outline:hover{border-color:var(--text-muted);color:var(--heading);transform:translateY(-1px)}
+.hero-link{color:var(--text-muted);font-size:.9rem;display:inline-block;margin-top:8px}
+.hero-link:hover{color:var(--heading)}
+
+/* ===== PROBLEM ===== */
+.problem{background:var(--bg-card-alt)}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.problem-text{font-size:clamp(1rem,1.8vw,1.15rem);color:var(--text-muted);max-width:720px;line-height:1.8}
+.problem-punch{font-size:clamp(1.4rem,3vw,2rem);font-family:var(--font-head);color:var(--heading);margin-top:32px;font-weight:700}
+.pv-box{border-radius:16px;padding:32px;background:var(--bg-card);border:1px solid var(--border);position:relative;overflow:hidden}
+.pv-box::before{content:'';position:absolute;top:-50%;right:-50%;width:100%;height:100%;background:radial-gradient(circle,rgba(16,185,129,.08),transparent 70%);pointer-events:none}
+.pv-section-label{font-family:var(--font-head);font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.pv-section-label.old-label{color:#ef4444}
+.pv-section-label.new-label{color:#10b981}
+.pv-section-label svg{width:14px;height:14px}
+.pv-items{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.pv-chip{padding:6px 14px;border-radius:8px;font-size:.85rem;display:inline-flex;align-items:center;gap:6px}
+.pv-chip.old{background:var(--bg-highlight);color:var(--text-muted);text-decoration:line-through;text-decoration-color:#ef4444;text-decoration-thickness:2px}
+.pv-chip.new{background:rgba(16,185,129,.1);color:#6ee7b7;border:1px solid rgba(16,185,129,.2)}
+.pv-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin-bottom:24px}
+@media(max-width:768px){.problem-grid{grid-template-columns:1fr;gap:40px}}
+
+/* ===== PIPELINE ===== */
+.pipeline-steps{display:flex;flex-direction:column;gap:80px;counter-reset:step}
+.pipe-step{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;counter-increment:step;opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.pipe-step.visible{opacity:1;transform:translateY(0)}
+.pipe-step:nth-child(even){direction:rtl}
+.pipe-step:nth-child(even)>*{direction:ltr}
+.pipe-num{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--red);display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:2px solid var(--red);border-radius:50%;margin-bottom:16px;letter-spacing:0}
+.pipe-step h3{font-size:clamp(1.4rem,2.5vw,1.8rem);color:var(--heading);margin-bottom:14px;font-family:var(--font-head)}
+.pipe-step p{color:var(--text-muted);line-height:1.8;font-size:1.05rem}
+.pipe-text{align-self:center}
+.pipe-img-wrap{perspective:900px;position:relative}
+.pipe-img{border-radius:16px;overflow:hidden;border:1px solid var(--border);position:relative;transform:rotateY(-4deg) rotateX(2deg);transition:transform .5s ease,box-shadow .5s ease;box-shadow:0 20px 60px rgba(0,0,0,.15),0 0 0 1px var(--border)}
+.pipe-step:nth-child(even) .pipe-img{transform:rotateY(4deg) rotateX(2deg)}
+.pipe-img:hover{transform:rotateY(0) rotateX(0)}
+.pipe-img img{width:100%;display:block}
+.pipe-img{cursor:pointer}
+.pipe-img-glow{display:none}
+
+/* ===== LIGHTBOX ===== */
+.lightbox-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;cursor:zoom-out;padding:24px}
+.lightbox-overlay.active{opacity:1;visibility:visible}
+.lightbox-overlay img{max-width:min(1200px,95vw);max-height:90vh;border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,.6);transform:scale(.92);transition:transform .35s cubic-bezier(.22,1,.36,1);object-fit:contain}
+.lightbox-overlay.active img{transform:scale(1)}
+.lightbox-close{position:absolute;top:20px;right:28px;color:#fff;font-size:2rem;cursor:pointer;opacity:.6;transition:opacity .2s;background:none;border:none;font-family:var(--font-body);line-height:1;z-index:10000}
+.lightbox-close:hover{opacity:1}
+.lightbox-caption{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.7);font-size:.9rem;font-family:var(--font-body);background:rgba(0,0,0,.5);padding:8px 20px;border-radius:8px;white-space:nowrap}
+.pipe-step:nth-child(1) .pipe-img{box-shadow:0 8px 40px rgba(168,85,247,.4),0 0 100px 20px rgba(168,85,247,.2),0 0 0 1px rgba(168,85,247,.15)}
+.pipe-step:nth-child(1) .pipe-img:hover{box-shadow:0 12px 60px rgba(168,85,247,.5),0 0 140px 30px rgba(168,85,247,.3),0 0 0 1px rgba(168,85,247,.25)}
+.pipe-step:nth-child(2) .pipe-img{box-shadow:0 8px 40px rgba(59,130,246,.4),0 0 100px 20px rgba(59,130,246,.2),0 0 0 1px rgba(59,130,246,.15)}
+.pipe-step:nth-child(2) .pipe-img:hover{box-shadow:0 12px 60px rgba(59,130,246,.5),0 0 140px 30px rgba(59,130,246,.3),0 0 0 1px rgba(59,130,246,.25)}
+.pipe-step:nth-child(3) .pipe-img{box-shadow:0 8px 40px rgba(6,182,212,.4),0 0 100px 20px rgba(6,182,212,.2),0 0 0 1px rgba(6,182,212,.15)}
+.pipe-step:nth-child(3) .pipe-img:hover{box-shadow:0 12px 60px rgba(6,182,212,.5),0 0 140px 30px rgba(6,182,212,.3),0 0 0 1px rgba(6,182,212,.25)}
+.pipe-step:nth-child(4) .pipe-img{box-shadow:0 8px 40px rgba(239,68,68,.4),0 0 100px 20px rgba(239,68,68,.2),0 0 0 1px rgba(239,68,68,.15)}
+.pipe-step:nth-child(4) .pipe-img:hover{box-shadow:0 12px 60px rgba(239,68,68,.5),0 0 140px 30px rgba(239,68,68,.3),0 0 0 1px rgba(239,68,68,.25)}
+.pipe-step:nth-child(5) .pipe-img{box-shadow:0 8px 40px rgba(16,185,129,.4),0 0 100px 20px rgba(16,185,129,.2),0 0 0 1px rgba(16,185,129,.15)}
+.pipe-step:nth-child(5) .pipe-img:hover{box-shadow:0 12px 60px rgba(16,185,129,.5),0 0 140px 30px rgba(16,185,129,.3),0 0 0 1px rgba(16,185,129,.25)}
+@media(max-width:768px){
+  .pipe-step{grid-template-columns:1fr;gap:32px}
+  .pipe-step:nth-child(even){direction:ltr}
+  .pipe-img{transform:none}
+  .pipe-step:nth-child(even) .pipe-img{transform:none}
+}
+
+/* ===== SHORTS SHOWCASE ===== */
+.shorts-showcase{background:var(--bg-card-alt)}
+.shorts-layout{display:grid;grid-template-columns:1fr auto;gap:80px;align-items:center}
+.shorts-lead{font-size:1.15rem;color:var(--text-muted);line-height:1.7;margin-bottom:40px;max-width:540px}
+.shorts-features{display:flex;flex-direction:column;gap:24px}
+.shorts-feat{display:flex;gap:16px;align-items:flex-start}
+.shorts-feat-icon{flex-shrink:0;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(226,0,26,.1);color:var(--red);font-weight:700;font-size:.9rem;font-family:var(--font-head)}
+.shorts-feat strong{display:block;color:var(--heading);font-size:1rem;margin-bottom:2px}
+.shorts-feat span{color:var(--text-muted);font-size:.92rem;line-height:1.5}
+.shorts-video-wrap{text-align:center}
+.phone-frame{position:relative;width:280px;background:#111;border-radius:36px;padding:12px;box-shadow:0 30px 80px rgba(0,0,0,.25),0 0 0 2px rgba(0,0,0,.1);overflow:hidden}
+.phone-notch{width:100px;height:6px;background:#222;border-radius:3px;margin:0 auto 10px}
+.shorts-video{width:100%;border-radius:24px;display:block}
+.shorts-caption{margin-top:16px;font-size:.8rem;color:var(--text-dim);font-style:italic}
+.shorts-mute-btn{position:absolute;bottom:20px;right:20px;z-index:10;width:40px;height:40px;border-radius:50%;border:none;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.shorts-mute-btn:hover{background:rgba(226,0,26,.7)}
+@media(max-width:900px){
+  .shorts-layout{grid-template-columns:1fr;gap:48px}
+  .shorts-video-wrap{order:-1;display:flex;flex-direction:column;align-items:center}
+}
+
+/* ===== USPs ===== */
+.usps{background:var(--bg-card-alt)}
+.usp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.usp-card{padding:36px 28px;border:1px solid var(--border);border-radius:12px;background:var(--bg);transition:border-color .3s}
+.usp-card:hover{border-color:var(--text-dim)}
+.usp-card h3{font-size:1.2rem;color:var(--heading);margin-bottom:14px}
+.usp-card p{color:var(--text-muted);line-height:1.7;font-size:.95rem}
+
+/* ===== ZIELGRUPPEN ===== */
+.ziel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.ziel-card{padding:32px 24px;border:1px solid var(--border);border-radius:12px;background:var(--bg-card);transition:border-color .3s}
+.ziel-card:hover{border-color:var(--text-dim)}
+.ziel-card h3{font-size:1.05rem;color:var(--red);margin-bottom:12px;font-family:var(--font-head);font-weight:600}
+.ziel-card p{color:var(--text-muted);font-size:.9rem;line-height:1.7}
+
+/* ===== PRICING ===== */
+.pricing{background:var(--bg-card-alt)}
+.toggle-wrap{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:48px}
+.toggle-label{font-size:.95rem;color:var(--text-muted);cursor:pointer;transition:color .2s}
+.toggle-label.active{color:var(--heading);font-weight:600}
+.toggle-track{width:52px;height:28px;background:var(--border);border-radius:14px;position:relative;cursor:pointer;transition:background .2s}
+.toggle-track.yearly{background:var(--red)}
+.toggle-knob{width:22px;height:22px;background:#fff;border-radius:50%;position:absolute;top:3px;left:3px;transition:transform .2s}
+.toggle-track.yearly .toggle-knob{transform:translateX(24px)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:20px}
+.pricing-grid-bottom{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:32px}
+.price-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:32px 24px;display:flex;flex-direction:column;position:relative;transition:border-color .3s}
+.price-card:hover{border-color:var(--text-dim)}
+.price-card.featured{border-color:var(--red);box-shadow:0 0 40px rgba(226,0,26,.1)}
+.price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-size:.75rem;font-weight:600;padding:4px 16px;border-radius:20px;white-space:nowrap}
+.price-card h3{font-family:var(--font-head);font-size:1.3rem;color:var(--heading);margin-bottom:4px}
+.price-card .price{font-family:var(--font-head);font-size:3.6rem;color:var(--heading);font-weight:700;margin:16px 0 4px}
+.price-card .price .price-unit{font-size:1rem;font-weight:400;color:var(--text-muted)}
+.price-card .price-period{font-size:.8rem;color:var(--text-dim);margin-bottom:20px}
+.price-features{list-style:none;flex:1;margin-bottom:24px}
+.price-features li{padding:6px 0;color:var(--text-muted);font-size:.88rem;display:flex;align-items:flex-start;gap:8px}
+.price-features li::before{content:'';display:inline-block;width:6px;height:6px;background:var(--red);border-radius:50%;margin-top:8px;flex-shrink:0}
+.price-card .btn{width:100%;text-align:center;padding:12px}
+.pricing-note{text-align:center;color:var(--text-dim);font-size:.9rem;margin-bottom:48px}
+
+/* Demo block */
+.demo-block{background:var(--bg);border:1px solid var(--red);border-radius:12px;padding:48px;text-align:center;position:relative;overflow:hidden}
+.demo-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red)}
+.demo-block h3{font-size:1.6rem;color:var(--heading);margin-bottom:12px;font-family:var(--font-head)}
+.demo-block p{color:var(--text-muted);max-width:560px;margin:0 auto 28px;line-height:1.7}
+
+/* ===== FEATURE TABLE ===== */
+.ftable-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.ftable{width:100%;border-collapse:collapse;min-width:640px}
+.ftable th,.ftable td{padding:14px 16px;text-align:center;border-bottom:1px solid var(--border);font-size:.88rem}
+.ftable th{color:var(--text-muted);font-weight:600;font-family:var(--font-head);font-size:1rem}
+.ftable th:first-child,.ftable td:first-child{text-align:left;color:var(--text);font-weight:500}
+.ftable td{color:var(--text-dim)}
+.ftable .check{color:var(--red);font-weight:700;font-size:1.1rem}
+.ftable tbody tr:hover{background:var(--bg-card-alt)}
+
+
+/* ===== FAQ ===== */
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer;gap:16px;user-select:none}
+.faq-q h3{font-size:1.05rem;color:var(--heading);font-weight:500;font-family:var(--font-body)}
+.faq-icon{width:24px;height:24px;flex-shrink:0;position:relative;transition:transform .3s}
+.faq-icon::before,.faq-icon::after{content:'';position:absolute;background:var(--text-muted);border-radius:1px}
+.faq-icon::before{width:14px;height:2px;top:11px;left:5px}
+.faq-icon::after{width:2px;height:14px;top:5px;left:11px;transition:transform .3s}
+.faq-item.open .faq-icon::after{transform:rotate(90deg);opacity:0}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-a p{padding:0 0 22px;color:var(--text-muted);line-height:1.7;font-size:.95rem}
+
+/* ===== WEBINAR ===== */
+.webinar{background:var(--bg-card-alt)}
+.webinar-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:48px;max-width:720px;margin:0 auto}
+.webinar-details{display:grid;grid-template-columns:1fr 1fr;gap:12px 32px;margin-bottom:32px}
+.webinar-detail{display:flex;gap:8px;font-size:.95rem}
+.webinar-detail .wd-label{color:var(--text-dim);min-width:80px}
+.webinar-detail .wd-value{color:var(--heading);font-weight:500}
+.webinar-note{color:var(--text-dim);font-size:.8rem;margin-top:24px;text-align:center}
+.webinar-form{margin-top:32px;border-top:1px solid var(--border);padding-top:32px}
+.webinar-form h3{font-size:1.1rem;color:var(--heading);margin-bottom:20px;font-family:var(--font-head)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group.full{grid-column:1/-1}
+.form-label{font-size:.8rem;color:var(--text-muted);font-weight:500}
+.form-input,.form-select{background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--heading);font-size:.9rem;font-family:var(--font-body);outline:none;transition:border-color .2s;width:100%}
+.form-input:focus,.form-select:focus{border-color:var(--red)}
+.form-input::placeholder{color:var(--text-dim)}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.form-select option{background:var(--input-bg);color:var(--text)}
+
+/* ===== CTA FOOTER ===== */
+.cta-footer{text-align:center;padding:100px 0 60px}
+.cta-footer h2{font-size:clamp(1.8rem,4vw,2.8rem);color:var(--heading);margin-bottom:40px}
+.cta-options{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* ===== FOOTER ===== */
+footer{border-top:1px solid var(--border);padding:32px 0;text-align:center}
+footer .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-links{display:flex;gap:24px}
+.footer-links a{color:var(--text-dim);font-size:.85rem}
+.footer-links a:hover{color:var(--text-muted)}
+.footer-copy{color:var(--text-dim);font-size:.8rem}
+
+/* ===== THEME TOGGLE ===== */
+.theme-toggle{background:none;border:1px solid var(--border);border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);transition:color .2s,border-color .2s}
+.theme-toggle:hover{color:var(--heading);border-color:var(--text-muted)}
+.theme-toggle .icon-sun,.theme-toggle .icon-moon{width:18px;height:18px}
+.theme-toggle .icon-moon{display:none}
+[data-theme="dark"] .theme-toggle .icon-sun{display:none}
+[data-theme="dark"] .theme-toggle .icon-moon{display:block}
+[data-theme="dark"] .nav-logo{filter:brightness(0) invert(1)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .pricing-grid{grid-template-columns:repeat(2,1fr)}
+  .pricing-grid-bottom{grid-template-columns:repeat(2,1fr)}
+  .ziel-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  :root{--section-pad:64px 0}
+  .nav-links a:not(.nav-cta){display:none}
+  .hero{padding:120px 0 64px}
+  .usp-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .pricing-grid-bottom{grid-template-columns:1fr}
+  .ziel-grid{grid-template-columns:1fr}
+  .webinar-details{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .demo-block{padding:32px 20px}
+  .webinar-card{padding:28px 20px}
+  .pipe-num{font-size:2.4rem}
+  .hero-actions{flex-direction:column;align-items:center}
+  .cta-options{flex-direction:column;align-items:center}
+  .btn{width:100%;max-width:320px}
+  footer .wrap{flex-direction:column;text-align:center}
+}
+
+/* ===== BOOKING MODAL ===== */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:16px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
+.modal-header{padding:24px 28px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.modal-header h2{font-family:var(--font-head);font-size:1.4rem;color:var(--heading);margin:0}
+.modal-close{background:none;border:none;color:var(--text-muted);font-size:1.6rem;cursor:pointer;padding:4px 8px;line-height:1;transition:color .2s}
+.modal-close:hover{color:var(--heading)}
+.modal-pkg-info{padding:16px 28px;background:var(--bg-card-alt);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.modal-pkg-name{font-family:var(--font-head);font-size:1.1rem;color:var(--red);font-weight:700}
+.modal-pkg-price{font-family:var(--font-head);font-size:1.6rem;color:var(--heading);font-weight:700}
+.modal-pkg-price span{font-size:.85rem;color:var(--text-muted);font-weight:400}
+.modal-body{padding:24px 28px}
+.modal-body .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.modal-body .form-group{display:flex;flex-direction:column;gap:5px}
+.modal-body .form-group.full{grid-column:1/-1}
+.modal-body .form-label{font-size:.78rem;color:var(--text-muted);font-weight:500}
+.modal-body .form-input,.modal-body .form-textarea{background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--heading);font-size:.9rem;font-family:var(--font-body);outline:none;transition:border-color .2s;width:100%}
+.modal-body .form-textarea{resize:vertical;min-height:60px}
+.modal-body .form-input:focus,.modal-body .form-textarea:focus{border-color:var(--red)}
+.modal-body .form-input::placeholder,.modal-body .form-textarea::placeholder{color:var(--text-dim)}
+.modal-checkbox{display:flex;align-items:flex-start;gap:10px;margin:20px 0 24px;cursor:pointer}
+.modal-checkbox input{margin-top:3px;accent-color:var(--red);width:18px;height:18px;flex-shrink:0}
+.modal-checkbox span{font-size:.88rem;color:var(--text-muted);line-height:1.5}
+.modal-error{background:rgba(226,0,26,.1);border:1px solid rgba(226,0,26,.3);border-radius:8px;padding:10px 14px;color:#ff6b6b;font-size:.88rem;margin-bottom:16px;display:none}
+.modal-success{text-align:center;padding:32px 0}
+.modal-success h3{font-family:var(--font-head);font-size:1.4rem;color:var(--heading);margin-bottom:12px}
+.modal-success p{color:var(--text-muted);font-size:.95rem;line-height:1.6;max-width:400px;margin:0 auto}
+.modal-success .checkmark{width:64px;height:64px;border-radius:50%;background:rgba(34,197,94,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:2rem;color:#22c55e}
+@media(max-width:768px){
+  .modal-body .form-row{grid-template-columns:1fr}
+  .modal{border-radius:12px}
+  .modal-header,.modal-body,.modal-pkg-info{padding-left:20px;padding-right:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+<div class="wrap">
+  <a href="#hero"><img src="/logo.png" alt="Alternita Studio" class="nav-logo"></a>
+  <div class="nav-links">
+    <a href="#pipeline">So funktioniert's</a>
+    <a href="#pricing">Pakete</a>
+    <a href="#faq">FAQ</a>
+    <button class="theme-toggle" id="theme-toggle" title="Hell/Dunkel umschalten">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <a href="#webinar" class="nav-cta">Live-Webinar</a>
+  </div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero section" id="hero">
+<div class="wrap">
+  <h1>Ihre politische Kommunikations&shy;abteilung. Sofort einsatzbereit.</h1>
+  <p class="hero-sub">Von der Nachricht zum fertigen Social-Media-Post &mdash; in fünf Minuten. Mit Ihren Positionen. In Ihrem Stil. In Ihrem Branding.</p>
+  <div class="hero-actions">
+    <a href="#pricing" class="btn btn-primary">Pakete ansehen</a>
+    <a href="#webinar" class="btn btn-outline">Kostenloses Live-Webinar</a>
+  </div>
+  <a href="#pipeline" class="hero-link">So funktioniert's &darr;</a>
+</div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem section section-border" id="problem">
+<div class="wrap">
+  <h2 class="section-title">Ihr Team hat Besseres zu tun.</h2>
+  <div class="problem-grid">
+    <div>
+      <p class="problem-text">
+        Ihre Mitarbeiter haben Ideen, politisches Gespür und den Draht zur Basis.
+        Aber sie verbringen Stunden mit Briefings, Layouts und Abstimmungsschleifen &mdash; statt mit dem, was wirklich zählt.
+        Geben Sie ihnen ein Werkzeug, das die Routinearbeit übernimmt.
+      </p>
+      <p class="problem-punch">Fünf Minuten statt einen ganzen Arbeitstag.</p>
+    </div>
+    <div class="pv-box">
+      <div class="pv-section-label old-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636"/></svg> Fällt weg</div>
+      <div class="pv-items">
+        <span class="pv-chip old">Texte briefen</span>
+        <span class="pv-chip old">Grafiken layouten</span>
+        <span class="pv-chip old">Videos schneiden</span>
+        <span class="pv-chip old">Abstimmungsschleifen</span>
+        <span class="pv-chip old">Copy-Paste</span>
+        <span class="pv-chip old">Formatierungen</span>
+      </div>
+      <div class="pv-divider"></div>
+      <div class="pv-section-label new-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Mehr Zeit für</div>
+      <div class="pv-items">
+        <span class="pv-chip new">Strategie</span>
+        <span class="pv-chip new">Kreative Kampagnen</span>
+        <span class="pv-chip new">Bürgerkontakt</span>
+        <span class="pv-chip new">Veranstaltungen</span>
+        <span class="pv-chip new">Schnelle Reaktionen</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PIPELINE -->
+<section class="section section-border" id="pipeline">
+<div class="wrap">
+  <h2 class="section-title">Fünf Schritte. Null Medienbrüche.</h2>
+  <p class="section-sub">Die komplette Content-Pipeline &mdash; von der Nachricht zum fertigen Post.</p>
+  <div class="pipeline-steps">
+    <div class="pipe-step">
+      <div class="pipe-text">
+        <div class="pipe-num">01</div>
+        <h3>Morgens wissen, was wichtig wird.</h3>
+        <p>Hunderte Nachrichten. Automatisch gefiltert und nach Relevanz sortiert. Was viral geht, sehen Sie zuerst &mdash; mit Viralitäts-Score, Zusammenfassung und Presselage. Noch vor dem ersten Kaffee.</p>
+      </div>
+      <div class="pipe-img-wrap">
+        <div class="pipe-img-glow glow-purple"></div>
+        <div class="pipe-img"><img src="/mockups/news.png" alt="Nachrichten-Dashboard mit Viralitäts-Score" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-text">
+        <div class="pipe-num">02</div>
+        <h3>Texte, die nach Ihnen klingen.</h3>
+        <p>Die Plattform kennt Ihre Positionen, Ihren Stil und Ihre Schreibregeln. Das Ergebnis: Fertige Beiträge für Facebook, Instagram und Co. &mdash; in Ihrem Ton, mit Ihrer Haltung. Wie vom besten Referenten geschrieben.</p>
+      </div>
+      <div class="pipe-img-wrap">
+        <div class="pipe-img-glow glow-blue"></div>
+        <div class="pipe-img"><img src="/mockups/ghostwriter.png" alt="Geistschreiber mit Artikelquelle und Einstellungen" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-text">
+        <div class="pipe-num">03</div>
+        <h3>Professionelle Grafiken. Sofort.</h3>
+        <p>Ihr Logo, Ihre Farben, Ihr Branding &mdash; automatisch auf jede Grafik angewendet. Kein Designer nötig. Ein Klick, fertig gelayoutet, sofort postbar.</p>
+      </div>
+      <div class="pipe-img-wrap">
+        <div class="pipe-img-glow glow-cyan"></div>
+        <div class="pipe-img"><img src="/mockups/echo.png" alt="Grafikerstellung mit Overlay und automatischem Hintergrund" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-text">
+        <div class="pipe-num">04</div>
+        <h3>Aus Reden werden Kurzvideos.</h3>
+        <p>Video hochladen &mdash; fertig. Die besten Stellen werden automatisch erkannt, in vertikale Clips geschnitten und mit dynamischen Untertiteln versehen. Vier Shorts aus zehn Minuten Rede.</p>
+      </div>
+      <div class="pipe-img-wrap">
+        <div class="pipe-img-glow glow-red"></div>
+        <div class="pipe-img"><img src="/mockups/shorts-detail.png" alt="Video-Shorts Pipeline mit fertigen Clips" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-text">
+        <div class="pipe-num">05</div>
+        <h3>Überall gleichzeitig posten oder planen.</h3>
+        <p>TikTok, Instagram, YouTube, X, Facebook, Threads, LinkedIn &mdash; alle Plattformen auf einmal. Sofort veröffentlichen oder für den perfekten Zeitpunkt vorplanen. Ein Klick, sieben Kanäle.</p>
+      </div>
+      <div class="pipe-img-wrap">
+        <div class="pipe-img-glow glow-green"></div>
+        <div class="pipe-img"><img src="/mockups/publish.png" alt="Multi-Plattform Veröffentlichung" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SHORTS SHOWCASE -->
+<section class="shorts-showcase section section-border" id="shorts-showcase">
+<div class="wrap">
+  <div class="shorts-layout">
+    <div class="shorts-text">
+      <h2 class="section-title">Shorts in Premiumqualität.</h2>
+      <p class="shorts-lead">Andere Tools liefern verpixelte Clips mit falschen Untertiteln. Wir nicht.</p>
+      <div class="shorts-features">
+        <div class="shorts-feat">
+          <span class="shorts-feat-icon">&#9654;</span>
+          <div>
+            <strong>Gestochen scharf in 1080&times;1920</strong>
+            <span>Kein Downscaling, keine Artefakte. Jeder Frame in voller Auflösung.</span>
+          </div>
+        </div>
+        <div class="shorts-feat">
+          <span class="shorts-feat-icon">Aa</span>
+          <div>
+            <strong>Untertitel, die stimmen</strong>
+            <span>KI-korrigierte Transkription mit Wort-für-Wort Karaoke-Animation. Kein Buchstabensalat, keine verschluckten Wörter.</span>
+          </div>
+        </div>
+        <div class="shorts-feat">
+          <span class="shorts-feat-icon">&#9733;</span>
+          <div>
+            <strong>Clip-Auswahl durch Rhetorik-KI</strong>
+            <span>Kein zufälliges Zerschneiden. Die KI versteht politische Rhetorik und findet die Stellen, die auf Social Media funktionieren.</span>
+          </div>
+        </div>
+        <div class="shorts-feat">
+          <span class="shorts-feat-icon">&#9881;</span>
+          <div>
+            <strong>Ihr Branding. Automatisch.</strong>
+            <span>Overlay, Schriftart und Farbwelt &mdash; jeder Clip trägt Ihr Corporate Design.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="shorts-video-wrap">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <video class="shorts-video" id="shorts-vid" src="/mockups/shorts-demo.mp4" autoplay loop muted playsinline></video>
+        <button class="shorts-mute-btn" id="shorts-mute" title="Ton ein/aus">
+          <svg id="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+          <svg id="icon-unmuted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+        </button>
+      </div>
+      <p class="shorts-caption">Echtes Ergebnis &mdash; direkt aus der Plattform. Kein Mockup.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- USPs -->
+<section class="usps section section-border" id="usps">
+<div class="wrap">
+  <h2 class="section-title">Was kein anderes Tool kann.</h2>
+  <p class="section-sub">Drei Alleinstellungsmerkmale, die den Unterschied machen.</p>
+  <div class="usp-grid">
+    <div class="usp-card">
+      <h3>Maßgeschneidert auf Ihre Politik.</h3>
+      <p>Keine generischen Texte. Ihre politischen Positionen, Ihre Schreibregeln, Ihre besten bisherigen Texte &mdash; alles fließt in jeden Beitrag ein. Die Plattform schreibt nicht für irgendjemanden. Sie schreibt für Sie.</p>
+    </div>
+    <div class="usp-card">
+      <h3>Ihr Branding. Automatisch.</h3>
+      <p>Eigene Overlays, eigene Schriftarten, eigene Farbwelt. Jede Grafik, jedes Video trägt Ihr Corporate Design &mdash; ohne dass jemand ein Designprogramm öffnen muss.</p>
+    </div>
+    <div class="usp-card">
+      <h3>Komplette Pipeline. Kein Flickenteppich.</h3>
+      <p>Kein Wechsel zwischen ChatGPT, Canva, OpusClip und Buffer. Kein Copy-Paste. Kein Medienbruch. Von der Nachricht zum fertigen Post &mdash; alles in einer Anwendung.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ZIELGRUPPEN -->
+<section class="section section-border" id="zielgruppen">
+<div class="wrap">
+  <h2 class="section-title">Für jede Ebene politischer Kommunikation.</h2>
+  <p class="section-sub">Ob Ortsverband oder Landtagsfraktion &mdash; die Plattform skaliert mit Ihren Anforderungen.</p>
+  <div class="ziel-grid">
+    <div class="ziel-card">
+      <h3>Ortsverband / Kreisverband</h3>
+      <p>Wissen, was los ist. Jeden Morgen das politische Briefing &mdash; automatisch gefiltert, zusammengefasst, bewertet.</p>
+    </div>
+    <div class="ziel-card">
+      <h3>Kreistagsfraktion / kleiner Verband</h3>
+      <p>Eigene Beiträge und Grafiken erstellen. Ohne Agentur, ohne Designer, ohne Texter.</p>
+    </div>
+    <div class="ziel-card">
+      <h3>Abgeordnete (MdL/MdB)</h3>
+      <p>Tägliche Posts, Shorts aus Reden, Multi-Plattform-Publishing. Die komplette Social-Media-Präsenz aus einer Hand.</p>
+    </div>
+    <div class="ziel-card">
+      <h3>Landtagsfraktion / Landesverband</h3>
+      <p>Mehrere Abgeordnete, ein System. Einheitliches Branding, zentrale Wissensdatenbank, skalierbare Produktion.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing section section-border" id="pricing">
+<div class="wrap">
+  <h2 class="section-title" style="text-align:center">Transparent. Keine versteckten Kosten.</h2>
+  <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto">Wählen Sie das Paket, das zu Ihrer politischen Ebene passt.</p>
+
+  <!-- Toggle -->
+  <div class="toggle-wrap">
+    <span class="toggle-label" id="label-monthly">Monatlich</span>
+    <div class="toggle-track yearly" id="pricing-toggle" role="switch" aria-checked="true" tabindex="0">
+      <div class="toggle-knob"></div>
+    </div>
+    <span class="toggle-label active" id="label-yearly">Jährlich <span style="color:var(--red);font-size:.8rem">(10% sparen)</span></span>
+  </div>
+
+  <!-- Cards -->
+  <div class="pricing-grid">
+    <!-- Briefing -->
+    <div class="price-card">
+      <h3>Briefing</h3>
+      <div class="price"><span class="price-monthly" style="display:none">69</span><span class="price-yearly">59</span> <span class="price-unit">&euro;/Monat</span></div>
+      <div class="price-period price-period-monthly" style="display:none">Monatlich kündbar</div>
+      <div class="price-period price-period-yearly">Jährliche Abrechnung</div>
+      <ul class="price-features">
+        <li>Viralitäts-Score</li>
+        <li>Maßgeschneidert für Ihre Region</li>
+        <li>Wissen was viral geht</li>
+        <li>Bis zu 5 Nachrichtenquellen</li>
+        <li>Jeden Morgen Tagesbriefing</li>
+        <li>Presselage</li>
+      </ul>
+      <button type="button" class="btn btn-outline book-btn" data-package="briefing" data-price-monthly="69" data-price-yearly="59">Jetzt starten</button>
+    </div>
+    <!-- Starter -->
+    <div class="price-card">
+      <h3>Starter</h3>
+      <div class="price"><span class="price-monthly" style="display:none">199</span><span class="price-yearly">179</span> <span class="price-unit">&euro;/Monat</span></div>
+      <div class="price-period price-period-monthly" style="display:none">Monatlich kündbar</div>
+      <div class="price-period price-period-yearly">Jährliche Abrechnung</div>
+      <ul class="price-features">
+        <li><strong style="color:var(--heading)">Alles aus Briefing</strong></li>
+        <li>Geistschreiber (Texte in Ihrem Stil)</li>
+        <li>Wissensdatenbank</li>
+        <li>Grafikengine mit eigenem Branding</li>
+        <li>20 Texte / 40 Grafiken pro Monat</li>
+      </ul>
+      <button type="button" class="btn btn-outline book-btn" data-package="starter" data-price-monthly="199" data-price-yearly="179">Jetzt starten</button>
+    </div>
+    <!-- Professional -->
+    <div class="price-card featured">
+      <div class="price-badge">Am beliebtesten</div>
+      <h3>Professional</h3>
+      <div class="price"><span class="price-monthly" style="display:none">399</span><span class="price-yearly">359</span> <span class="price-unit">&euro;/Monat</span></div>
+      <div class="price-period price-period-monthly" style="display:none">Monatlich kündbar</div>
+      <div class="price-period price-period-yearly">Jährliche Abrechnung</div>
+      <ul class="price-features">
+        <li><strong style="color:var(--heading)">Alles aus Starter</strong></li>
+        <li>Videoengine<br>(Shorts aus Reden)</li>
+        <li>Dynamische Untertitel</li>
+        <li>Multi-Plattform-Publishing</li>
+        <li>50 Texte / 100 Grafiken / 3 Video-Credits pro Monat</li>
+      </ul>
+      <button type="button" class="btn btn-primary book-btn" data-package="professional" data-price-monthly="399" data-price-yearly="359">Beliebteste Wahl</button>
+    </div>
+  </div>
+  <div class="pricing-grid-bottom">
+    <!-- Fraktion -->
+    <div class="price-card">
+      <h3>Fraktion</h3>
+      <div class="price" style="font-size:1.3rem;padding:12px 0">Individuell auf Anfrage</div>
+      <div class="price-period">&nbsp;</div>
+      <ul class="price-features">
+        <li><strong style="color:var(--heading)">Alles aus Professional</strong></li>
+        <li>Mehrere Nutzerkonten</li>
+        <li>Unbegrenzte Texte &amp; Grafiken</li>
+        <li>Priority-Support</li>
+      </ul>
+      <button type="button" class="btn btn-outline demo-btn">Angebot anfragen</button>
+    </div>
+    <!-- Wahlkampf -->
+    <div class="price-card">
+      <h3>Wahlkampf</h3>
+      <div class="price" style="font-size:1.3rem;padding:12px 0">Individuell auf Anfrage</div>
+      <div class="price-period">&nbsp;</div>
+      <ul class="price-features">
+        <li>Individueller Funktionsumfang</li>
+        <li>Maßgeschneidert für Ihre Kampagne</li>
+        <li>Persönliche Beratung &amp; Onboarding</li>
+        <li>Flexibler Zeitraum</li>
+      </ul>
+      <button type="button" class="btn btn-outline demo-btn">Angebot anfragen</button>
+    </div>
+  </div>
+
+  <p class="pricing-note">Jahresverträge: 12 Monate Laufzeit, eine Rechnung, 10% günstiger.</p>
+
+  <!-- Demo block -->
+  <div class="demo-block">
+    <h3>Lassen Sie sich die Plattform persönlich zeigen.</h3>
+    <p>In 20 Minuten sehen Sie, wie die komplette Pipeline für Ihre Fraktion, Ihren Verband oder Ihr Abgeordnetenbüro funktioniert. Individuell. Unverbindlich.</p>
+    <button type="button" class="btn btn-primary demo-btn">Persönliche Demo vereinbaren</button>
+  </div>
+</div>
+</section>
+
+<!-- FEATURE TABLE -->
+<section class="section section-border" id="features">
+<div class="wrap">
+  <h2 class="section-title" style="text-align:center">Alle Funktionen im Überblick.</h2>
+  <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto">Detaillierter Vergleich aller fünf Pakete.</p>
+  <div class="ftable-wrap">
+    <table class="ftable">
+      <thead>
+        <tr>
+          <th>Funktion</th>
+          <th>Briefing</th>
+          <th>Starter</th>
+          <th>Professional</th>
+          <th>Fraktion</th>
+          <th>Wahlkampf</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Tagesbriefing &amp; News</td><td class="check">&check;</td><td class="check">&check;</td><td class="check">&check;</td><td class="check">&check;</td><td>individuell</td></tr>
+        <tr><td>Viralitäts-Score</td><td class="check">&check;</td><td class="check">&check;</td><td class="check">&check;</td><td class="check">&check;</td><td>individuell</td></tr>
+        <tr><td>Eigene RSS-Feeds</td><td class="check">&check;</td><td class="check">&check;</td><td class="check">&check;</td><td class="check">&check;</td><td>individuell</td></tr>
+        <tr><td>Geistschreiber (Texterstellung)</td><td>&mdash;</td><td class="check">&check;</td><td class="check">&check;</td><td class="check">&check;</td><td>individuell</td></tr>
+        <tr><td>Wissensdatenbank / RAG</td><td>&mdash;</td><td class="check">&check;</td><td class="check">&check;</td><td class="check">&check;</td><td>individuell</td></tr>
+        <tr><td>Grafikengine</td><td>&mdash;</td><td class="check">&check;</td><td class="check">&check;</td><td class="check">&check;</td><td>individuell</td></tr>
+        <tr><td>Eigene Overlays / Branding</td><td>&mdash;</td><td class="check">&check;</td><td class="check">&check;</td><td class="check">&check;</td><td>individuell</td></tr>
+        <tr><td>Videoengine (Shorts)</td><td>&mdash;</td><td>&mdash;</td><td class="check">&check;</td><td class="check">&check;</td><td>individuell</td></tr>
+        <tr><td>Dynamische Untertitel</td><td>&mdash;</td><td>&mdash;</td><td class="check">&check;</td><td class="check">&check;</td><td>individuell</td></tr>
+        <tr><td>Multi-Plattform-Publishing</td><td>&mdash;</td><td>&mdash;</td><td class="check">&check;</td><td class="check">&check;</td><td>individuell</td></tr>
+        <tr><td>Multi-Seat</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td class="check">&check;</td><td>individuell</td></tr>
+        <tr><td>Erhöhte Credits</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td class="check">&check;</td><td>individuell</td></tr>
+        <tr><td>Priority-Support</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td class="check">&check;</td><td>individuell</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-border" id="faq">
+<div class="wrap">
+  <h2 class="section-title" style="text-align:center">Häufige Fragen</h2>
+  <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto">Antworten auf die wichtigsten Fragen zur Plattform.</p>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q"><h3>Muss ich ein Jahresabo abschließen?</h3><div class="faq-icon"></div></div>
+      <div class="faq-a"><p>Nein. Sie können monatlich buchen und monatlich kündigen. Der Jahresvertrag bietet 10% Rabatt bei 12 Monaten Laufzeit.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><h3>Wie schnell bin ich einsatzbereit?</h3><div class="faq-icon"></div></div>
+      <div class="faq-a"><p>Sofort. Zugangsdaten kommen per E-Mail. Die Wissensdatenbank können Sie jederzeit mit Ihren Positionen und Stilvorlagen befüllen &mdash; je mehr Sie hinterlegen, desto besser die Ergebnisse.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><h3>Können die Texte wirklich in meinem Stil geschrieben werden?</h3><div class="faq-icon"></div></div>
+      <div class="faq-a"><p>Ja. Sie hinterlegen Ihre besten bisherigen Texte als Stilvorlagen. Die Plattform lernt Ihren Schreibstil anhand konkreter Beispiele &mdash; nicht abstrakt, sondern messbar.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><h3>Was passiert, wenn meine Credits aufgebraucht sind?</h3><div class="faq-icon"></div></div>
+      <div class="faq-a"><p>Die entsprechenden Funktionen werden gesperrt, bis die Credits zum Monatswechsel erneuert werden. Manuelles Schreiben im Editor ist immer möglich &mdash; ohne Creditverbrauch.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><h3>Wer sieht meine Daten?</h3><div class="faq-icon"></div></div>
+      <div class="faq-a"><p>Niemand außer Ihnen. Vollständige Mandantentrennung auf Datenbank- und Dateisystem-Ebene. Ihre Positionen, Texte und Grafiken sind isoliert und nur für Sie sichtbar.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><h3>Kann ich das Tool testen?</h3><div class="faq-icon"></div></div>
+      <div class="faq-a"><p>Besuchen Sie unser kostenloses Live-Webinar &mdash; alle zwei Wochen zeigen wir die Plattform in 30 Minuten live. Oder vereinbaren Sie eine persönliche Demo für eine individuelle Vorführung.</p></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- WEBINAR -->
+<section class="webinar section section-border" id="webinar">
+<div class="wrap">
+  <h2 class="section-title" style="text-align:center">Sehen Sie die Plattform live. Kostenlos.</h2>
+  <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto">Alle zwei Wochen zeigen wir in 30 Minuten, wie die komplette Content-Pipeline funktioniert &mdash; von der Nachricht zum fertigen Post. Live, mit echten Daten, mit Raum für Ihre Fragen.</p>
+  <div class="webinar-card">
+    <div class="webinar-details">
+      <div class="webinar-detail"><span class="wd-label">Termin</span><span class="wd-value">Jeden zweiten Donnerstag, 14:00 Uhr</span></div>
+      <div class="webinar-detail"><span class="wd-label">Dauer</span><span class="wd-value">30 Minuten + Fragerunde</span></div>
+      <div class="webinar-detail"><span class="wd-label">Kosten</span><span class="wd-value">Keine</span></div>
+      <div class="webinar-detail"><span class="wd-label">Wo</span><span class="wd-value">Online (Zoom)</span></div>
+    </div>
+    <div style="text-align:center">
+      <button type="button" class="btn btn-primary" id="show-form-btn">Kostenlos anmelden</button>
+    </div>
+    <p class="webinar-note">Nach der Anmeldung erhalten Sie den Zoom-Link per E-Mail. Keine Verpflichtung, keine Verkaufsgespräche.</p>
+
+    <!-- Registration form (hidden by default) -->
+    <div class="webinar-form" id="webinar-form" style="display:none">
+      <h3>Anmeldung zum Live-Webinar</h3>
+      <form id="registration-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="reg-name">Name *</label>
+            <input class="form-input" type="text" id="reg-name" placeholder="Ihr Name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-email">E-Mail *</label>
+            <input class="form-input" type="email" id="reg-email" placeholder="ihre@email.de" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="reg-org">Organisation / Verband</label>
+            <input class="form-input" type="text" id="reg-org" placeholder="Optional">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-interest">Paket-Interesse</label>
+            <select class="form-select" id="reg-interest">
+              <option value="">Bitte wählen (optional)</option>
+              <option value="briefing">Briefing</option>
+              <option value="starter">Starter</option>
+              <option value="professional">Professional</option>
+              <option value="fraktion">Fraktion</option>
+              <option value="wahlkampf">Wahlkampf</option>
+              <option value="unsure">Weiß noch nicht</option>
+            </select>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:8px">
+          <button type="submit" class="btn btn-primary">Anmeldung absenden</button>
+        </div>
+      </form>
+      <div id="form-success" style="display:none;text-align:center;padding:24px 0">
+        <p style="color:var(--heading);font-size:1.1rem;font-weight:600;margin-bottom:8px">Vielen Dank für Ihre Anmeldung!</p>
+        <p style="color:var(--text-muted)">Sie erhalten den Zoom-Link in Kürze per E-Mail.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CTA FOOTER -->
+<section class="cta-footer section-border">
+<div class="wrap">
+  <h2>Bereit für schnellere politische Kommunikation?</h2>
+  <div class="cta-options">
+    <a href="#webinar" class="btn btn-primary">Zum nächsten Webinar anmelden</a>
+    <button type="button" class="btn btn-outline demo-btn">Persönliche Demo vereinbaren</button>
+    <a href="#pricing" class="btn btn-outline">Pakete ansehen</a>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="wrap">
+  <div class="footer-links">
+    <a href="#">Impressum</a>
+    <a href="/datenschutz">Datenschutz</a>
+    <a href="/agb">AGB</a>
+  </div>
+  <span class="footer-copy">&copy; 2026 Alternita Studio. Alle Rechte vorbehalten.</span>
+</div>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="booking-overlay">
+  <div class="modal" id="booking-modal">
+    <div class="modal-header">
+      <h2>Verbindlich buchen</h2>
+      <button type="button" class="modal-close" id="booking-close">&times;</button>
+    </div>
+    <div class="modal-pkg-info">
+      <span class="modal-pkg-name" id="modal-pkg-name"></span>
+      <span class="modal-pkg-price" id="modal-pkg-price"></span>
+    </div>
+    <div class="modal-body">
+      <div class="modal-error" id="booking-error"></div>
+      <form id="booking-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="book-name">Name *</label>
+            <input class="form-input" type="text" id="book-name" placeholder="Vor- und Nachname" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="book-email">E-Mail *</label>
+            <input class="form-input" type="email" id="book-email" placeholder="ihre@email.de" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full">
+            <label class="form-label" for="book-company">Firma / Organisation *</label>
+            <input class="form-input" type="text" id="book-company" placeholder="Firma oder Organisation" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full">
+            <label class="form-label" for="book-street">Straße + Hausnummer *</label>
+            <input class="form-input" type="text" id="book-street" placeholder="Musterstraße 1" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="book-plz">PLZ *</label>
+            <input class="form-input" type="text" id="book-plz" placeholder="12345" required maxlength="10">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="book-city">Ort *</label>
+            <input class="form-input" type="text" id="book-city" placeholder="Berlin" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="book-phone">Telefon</label>
+            <input class="form-input" type="tel" id="book-phone" placeholder="Optional">
+          </div>
+          <div class="form-group">
+            <label class="form-label">&nbsp;</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full">
+            <label class="form-label" for="book-notes">Anmerkungen</label>
+            <textarea class="form-textarea" id="book-notes" placeholder="Optional — z.B. besondere Wünsche" rows="2"></textarea>
+          </div>
+        </div>
+        <label class="modal-checkbox">
+          <input type="checkbox" id="book-confirm" required>
+          <span>Ich bestelle verbindlich auf Rechnung. Die Rechnung wird per E-Mail zugestellt.</span>
+        </label>
+        <button type="submit" class="btn btn-primary" id="booking-submit" style="width:100%">Jetzt verbindlich buchen</button>
+      </form>
+      <div class="modal-success" id="booking-success" style="display:none">
+        <div class="checkmark">&#10003;</div>
+        <h3>Buchung erfolgreich!</h3>
+        <p>Vielen Dank für Ihre Bestellung. Sie erhalten in Kürze eine Bestätigung per E-Mail. Die Rechnung wird separat zugestellt.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DEMO REQUEST MODAL -->
+<div class="modal-overlay" id="demo-overlay">
+  <div class="modal" id="demo-modal">
+    <div class="modal-header">
+      <h2>Persönliche Demo vereinbaren</h2>
+      <button type="button" class="modal-close" id="demo-close">&times;</button>
+    </div>
+    <div class="modal-pkg-info" style="background:var(--bg-card-alt);">
+      <span style="color:var(--text-muted);font-size:.95rem;">In 20 Minuten zeigen wir Ihnen die komplette Plattform — individuell und unverbindlich.</span>
+    </div>
+    <div class="modal-body">
+      <div class="modal-error" id="demo-error"></div>
+      <form id="demo-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="demo-name">Name *</label>
+            <input class="form-input" type="text" id="demo-name" placeholder="Vor- und Nachname" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="demo-email">E-Mail *</label>
+            <input class="form-input" type="email" id="demo-email" placeholder="ihre@email.de" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="demo-company">Firma / Organisation</label>
+            <input class="form-input" type="text" id="demo-company" placeholder="Optional">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="demo-phone">Telefon</label>
+            <input class="form-input" type="tel" id="demo-phone" placeholder="Optional">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full">
+            <label class="form-label" for="demo-notes">Anmerkungen</label>
+            <textarea class="form-textarea" id="demo-notes" placeholder="Optional — z.B. bevorzugte Uhrzeiten oder besonderes Interesse" rows="2"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="demo-submit" style="width:100%;margin-top:8px">Demo-Termin anfragen</button>
+      </form>
+      <div class="modal-success" id="demo-success" style="display:none">
+        <div class="checkmark">&#10003;</div>
+        <h3>Anfrage erhalten!</h3>
+        <p>Vielen Dank für Ihr Interesse. Wir melden uns in Kürze bei Ihnen, um einen persönlichen Demo-Termin zu vereinbaren.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // Theme toggle
+  var themeBtn = document.getElementById('theme-toggle');
+  var saved = localStorage.getItem('as-theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function() {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('as-theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('as-theme', 'dark');
+      }
+    });
+  }
+
+  // Shorts mute toggle
+  var vid = document.getElementById('shorts-vid');
+  var muteBtn = document.getElementById('shorts-mute');
+  var iconMuted = document.getElementById('icon-muted');
+  var iconUnmuted = document.getElementById('icon-unmuted');
+  if (vid && muteBtn) {
+    muteBtn.addEventListener('click', function() {
+      vid.muted = !vid.muted;
+      iconMuted.style.display = vid.muted ? '' : 'none';
+      iconUnmuted.style.display = vid.muted ? 'none' : '';
+    });
+  }
+
+  // Pricing toggle
+  var toggle = document.getElementById('pricing-toggle');
+  var labelM = document.getElementById('label-monthly');
+  var labelY = document.getElementById('label-yearly');
+  var isYearly = true;
+
+  function updatePricing() {
+    toggle.classList.toggle('yearly', isYearly);
+    toggle.setAttribute('aria-checked', String(isYearly));
+    labelM.classList.toggle('active', !isYearly);
+    labelY.classList.toggle('active', isYearly);
+    var monthly = document.querySelectorAll('.price-monthly');
+    var yearly = document.querySelectorAll('.price-yearly');
+    var periodM = document.querySelectorAll('.price-period-monthly');
+    var periodY = document.querySelectorAll('.price-period-yearly');
+    for (var i = 0; i < monthly.length; i++) {
+      monthly[i].style.display = isYearly ? 'none' : 'inline';
+      yearly[i].style.display = isYearly ? 'inline' : 'none';
+    }
+    for (var j = 0; j < periodM.length; j++) {
+      periodM[j].style.display = isYearly ? 'none' : 'block';
+      periodY[j].style.display = isYearly ? 'block' : 'none';
+    }
+  }
+
+  toggle.addEventListener('click', function() {
+    isYearly = !isYearly;
+    updatePricing();
+  });
+  toggle.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); isYearly = !isYearly; updatePricing(); }
+  });
+  labelM.addEventListener('click', function() { isYearly = false; updatePricing(); });
+  labelY.addEventListener('click', function() { isYearly = true; updatePricing(); });
+
+  // FAQ accordion
+  var faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(function(item) {
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    q.addEventListener('click', function() {
+      var wasOpen = item.classList.contains('open');
+      // Close all
+      faqItems.forEach(function(fi) {
+        fi.classList.remove('open');
+        fi.querySelector('.faq-a').style.maxHeight = null;
+      });
+      // Open clicked if it was closed
+      if (!wasOpen) {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Webinar form toggle
+  var showBtn = document.getElementById('show-form-btn');
+  var formWrap = document.getElementById('webinar-form');
+  showBtn.addEventListener('click', function() {
+    formWrap.style.display = 'block';
+    showBtn.style.display = 'none';
+    formWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  // Form submission (client-side only — no backend)
+  var form = document.getElementById('registration-form');
+  var success = document.getElementById('form-success');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    form.style.display = 'none';
+    success.style.display = 'block';
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        var offset = 70; // nav height
+        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ===== BOOKING MODAL =====
+  var packageLabels = { briefing: 'Briefing', starter: 'Starter', professional: 'Professional', fraktion: 'Fraktion' };
+  var overlay = document.getElementById('booking-overlay');
+  var modal = document.getElementById('booking-modal');
+  var closeBtn = document.getElementById('booking-close');
+  var bookForm = document.getElementById('booking-form');
+  var bookError = document.getElementById('booking-error');
+  var bookSuccess = document.getElementById('booking-success');
+  var submitBtn = document.getElementById('booking-submit');
+  var modalPkgName = document.getElementById('modal-pkg-name');
+  var modalPkgPrice = document.getElementById('modal-pkg-price');
+
+  var currentPkg = '';
+  var currentPriceMonthly = 0;
+  var currentPriceYearly = 0;
+
+  function formatPrice(p) {
+    return p >= 1000 ? p.toLocaleString('de-DE') : p;
+  }
+
+  function openBookingModal(pkg, priceMonthly, priceYearly) {
+    currentPkg = pkg;
+    currentPriceMonthly = parseInt(priceMonthly);
+    currentPriceYearly = parseInt(priceYearly);
+    modalPkgName.textContent = 'Paket ' + (packageLabels[pkg] || pkg);
+    var price = isYearly ? currentPriceYearly : currentPriceMonthly;
+    modalPkgPrice.innerHTML = formatPrice(price) + ' <span>&euro;/Monat</span>';
+    // Reset form state
+    bookForm.reset();
+    bookForm.style.display = '';
+    bookSuccess.style.display = 'none';
+    bookError.style.display = 'none';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Jetzt verbindlich buchen';
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBookingModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Attach to all book buttons
+  document.querySelectorAll('.book-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      openBookingModal(
+        this.getAttribute('data-package'),
+        this.getAttribute('data-price-monthly'),
+        this.getAttribute('data-price-yearly')
+      );
+    });
+  });
+
+  closeBtn.addEventListener('click', closeBookingModal);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeBookingModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeBookingModal();
+  });
+
+  // Update modal price when toggle changes
+  var origUpdatePricing = updatePricing;
+  // We already declared updatePricing, so let's observe the toggle for modal price updates
+  var observer = new MutationObserver(function() {
+    if (overlay.classList.contains('open')) {
+      var price = isYearly ? currentPriceYearly : currentPriceMonthly;
+      modalPkgPrice.innerHTML = formatPrice(price) + ' <span>&euro;/Monat</span>';
+    }
+  });
+  observer.observe(toggle, { attributes: true, attributeFilter: ['class'] });
+
+  // Form submission
+  bookForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    bookError.style.display = 'none';
+
+    var confirmBox = document.getElementById('book-confirm');
+    if (!confirmBox.checked) {
+      bookError.textContent = 'Bitte bestätigen Sie die verbindliche Bestellung auf Rechnung.';
+      bookError.style.display = 'block';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Wird gesendet...';
+
+    var price = isYearly ? currentPriceYearly : currentPriceMonthly;
+    var payload = {
+      package: currentPkg,
+      billing_period: isYearly ? 'yearly' : 'monthly',
+      price_monthly: price,
+      name: document.getElementById('book-name').value.trim(),
+      email: document.getElementById('book-email').value.trim(),
+      company_name: document.getElementById('book-company').value.trim(),
+      street: document.getElementById('book-street').value.trim(),
+      plz: document.getElementById('book-plz').value.trim(),
+      city: document.getElementById('book-city').value.trim(),
+      phone: document.getElementById('book-phone').value.trim(),
+      notes: document.getElementById('book-notes').value.trim()
+    };
+
+    fetch('/api/bookings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(resp) {
+      return resp.json().then(function(data) { return { ok: resp.ok, status: resp.status, data: data }; });
+    })
+    .then(function(result) {
+      if (result.ok) {
+        bookForm.style.display = 'none';
+        bookSuccess.style.display = 'block';
+      } else {
+        bookError.textContent = result.data.error || 'Buchung fehlgeschlagen. Bitte versuchen Sie es erneut.';
+        bookError.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Jetzt verbindlich buchen';
+      }
+    })
+    .catch(function() {
+      bookError.textContent = 'Netzwerkfehler. Bitte prüfen Sie Ihre Verbindung.';
+      bookError.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Jetzt verbindlich buchen';
+    });
+  });
+
+  // ===== DEMO REQUEST MODAL =====
+  var demoOverlay = document.getElementById('demo-overlay');
+  var demoCloseBtn = document.getElementById('demo-close');
+  var demoForm = document.getElementById('demo-form');
+  var demoError = document.getElementById('demo-error');
+  var demoSuccess = document.getElementById('demo-success');
+  var demoSubmitBtn = document.getElementById('demo-submit');
+
+  function openDemoModal() {
+    demoForm.reset();
+    demoForm.style.display = '';
+    demoSuccess.style.display = 'none';
+    demoError.style.display = 'none';
+    demoSubmitBtn.disabled = false;
+    demoSubmitBtn.textContent = 'Demo-Termin anfragen';
+    demoOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDemoModal() {
+    demoOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.demo-btn').forEach(function(btn) {
+    btn.addEventListener('click', openDemoModal);
+  });
+
+  demoCloseBtn.addEventListener('click', closeDemoModal);
+  demoOverlay.addEventListener('click', function(e) {
+    if (e.target === demoOverlay) closeDemoModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && demoOverlay.classList.contains('open')) closeDemoModal();
+  });
+
+  demoForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    demoError.style.display = 'none';
+    demoSubmitBtn.disabled = true;
+    demoSubmitBtn.textContent = 'Wird gesendet...';
+
+    var payload = {
+      name: document.getElementById('demo-name').value.trim(),
+      email: document.getElementById('demo-email').value.trim(),
+      company_name: document.getElementById('demo-company').value.trim(),
+      phone: document.getElementById('demo-phone').value.trim(),
+      notes: document.getElementById('demo-notes').value.trim()
+    };
+
+    fetch('/api/bookings/demo', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(resp) {
+      return resp.json().then(function(data) { return { ok: resp.ok, data: data }; });
+    })
+    .then(function(result) {
+      if (result.ok) {
+        demoForm.style.display = 'none';
+        demoSuccess.style.display = 'block';
+      } else {
+        demoError.textContent = result.data.error || 'Anfrage fehlgeschlagen.';
+        demoError.style.display = 'block';
+        demoSubmitBtn.disabled = false;
+        demoSubmitBtn.textContent = 'Demo-Termin anfragen';
+      }
+    })
+    .catch(function() {
+      demoError.textContent = 'Netzwerkfehler. Bitte prüfen Sie Ihre Verbindung.';
+      demoError.style.display = 'block';
+      demoSubmitBtn.disabled = false;
+      demoSubmitBtn.textContent = 'Demo-Termin anfragen';
+    });
+  });
+})();
+</script>
+<script>
+// Scroll-triggered fade-in for pipeline steps
+(function(){
+  var steps = document.querySelectorAll('.pipe-step');
+  if (!steps.length || !('IntersectionObserver' in window)) {
+    steps.forEach(function(s){ s.classList.add('visible'); });
+    return;
+  }
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+  steps.forEach(function(s){observer.observe(s);});
+})();
+</script>
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" aria-label="Schliessen">&times;</button>
+  <img src="" alt="">
+  <div class="lightbox-caption"></div>
+</div>
+<script>
+(function(){
+  var overlay = document.getElementById('lightbox');
+  var lbImg = overlay.querySelector('img');
+  var lbCaption = overlay.querySelector('.lightbox-caption');
+  var stepLabels = ['01 — Nachrichten-Dashboard','02 — Geistschreiber','03 — Grafikerstellung','04 — Video Shorts','05 — Veröffentlichen'];
+
+  document.querySelectorAll('.pipe-step .pipe-img').forEach(function(el, i){
+    el.addEventListener('click', function(){
+      var img = el.querySelector('img');
+      if(!img) return;
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCaption.textContent = stepLabels[i] || '';
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeLightbox(){
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay || e.target.classList.contains('lightbox-close')) closeLightbox();
+  });
+  overlay.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeLightbox();
+  });
+})();
+</script>
+</body>
+</html>
